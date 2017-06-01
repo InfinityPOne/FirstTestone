@@ -1,5 +1,2 @@
-# FirstTestone
-just a quick test for gitbut
+I am hacking the impress.js liabrary to get a prototype grid using HTML
 
-
-Check in NUMBER ONE
