@@ -201,6 +201,7 @@
         if (!impressSupported) {
             return {
                 init: empty,
+                createPortal: createPortal,
                 goto: empty,
                 prev: empty,
                 next: empty
@@ -272,6 +273,9 @@
         // `initStep` initializes given step element by reading data from its
         // data attributes and setting correct styles.
         var initStep = function (el, idx) {
+
+            console.log(el.dataset);
+
             var data = el.dataset,
                 step = {
                     translate: {
@@ -393,6 +397,10 @@
             });
         };
 
+        var createPortal = function () {
+            console.log('createPortal');
+        };
+
         // `getStep` is a helper function that returns a step element defined by parameter.
         // If a number is given, step with index given by the number is returned, if a string
         // is given step element with such id is returned, if DOM element is given it is returned
@@ -405,6 +413,7 @@
             }
             return (step && step.id && stepsData["impress-" + step.id]) ? step : null;
         };
+
 
         // Used to reset timeout for `impress:stepenter` event
         var stepEnterTimeout = null;
@@ -432,6 +441,8 @@
             window.scrollTo(0, 0);
 
             var step = stepsData["impress-" + el.id];
+
+            console.log(step);
 
             if (activeStep) {
                 activeStep.classList.remove("active");
@@ -645,6 +656,7 @@
         // Store and return API for given impress.js root element
         return (roots["impress-root-" + rootId] = {
             init: init,
+            createPortal: createPortal,
             goto: goto,
             next: next,
             prev: prev
@@ -690,6 +702,8 @@
         // or anything. `impress:init` event data gives you everything you
         // need to control the presentation that was just initialized.
         var api = event.detail.api;
+
+        console.log('fred');
 
         // KEYBOARD NAVIGATION HANDLERS
 
